@@ -39,6 +39,10 @@ export class CameraComponent {
     }
   }
 
+  // Metodo per eliminare una foto
+  deletePhoto(photo: string) {
+    this.photos = this.photos.filter(p => p !== photo);
+  }
 
   // Calcola il numero totale di pagine
   totalPages(): number {

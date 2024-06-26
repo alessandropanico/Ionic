@@ -1,8 +1,7 @@
-
-
 .photo-grid {
   display: flex;
   flex-wrap: wrap;
+  gap: 10px; /* Spazio tra le colonne delle immagini */
 }
 
 .row {
@@ -10,7 +9,6 @@
   flex-wrap: wrap;
   gap: 10px;
 }
-
 
 .pagination {
   margin-top: 20px; /* Spazio sopra la paginazione */
@@ -31,26 +29,42 @@
 }
 
 .foto {
-  width: 300px !important;
-  height: 250px !important;
-  display: block;
-  border-radius: 8px; /* Aggiunta di bordi arrotondati */
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+ion-card {
+  padding: 10px;
 }
 
 
-ion-card-content img{
-  width: 320px !important;
-  height: 250px !important;
-  display: block;
-  border-radius: 8px; /* Aggiunta di bordi arrotondati */
-}
 
 .photo-container {
-  padding: 5px;
+  position: relative;
   flex: 1 0 calc(20% - 10px); /* 5 colonne per riga */
   box-sizing: border-box;
   margin-bottom: 10px; /* Spazio sotto ogni riga di immagini */
 }
+
+.delete-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  padding: 0;
+}
+
 
 @media screen and (max-width: 600px) {
   .photo-container {

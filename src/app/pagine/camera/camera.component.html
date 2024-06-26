@@ -3,11 +3,10 @@
 </ion-header>
 
 <!-- Messaggio di nessuna foto se photos è vuoto -->
-
 <ion-content *ngIf="photos.length === 0">
   <div class="ion-padding">
     <p>Nessuna foto disponibile.</p>
-    <ion-button  (click)="takePhoto()">Take Photo</ion-button>
+    <ion-button (click)="takePhoto()">Take Photo</ion-button>
   </div>
 </ion-content>
 
@@ -22,6 +21,9 @@
         <div class="row" *ngFor="let row of getCurrentPageRows()">
           <ion-card *ngFor="let photo of row" class="photo-container">
             <img class="foto" [src]="photo" alt="Photo" />
+            <button class="delete-button" (click)="deletePhoto(photo)">
+              <span class="delete-icon">&times;</span>
+            </button>
           </ion-card>
         </div>
       </ion-card-content>
