@@ -1,7 +1,6 @@
 .photo-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Spazio tra le colonne delle immagini */
 }
 
 .row {
@@ -9,9 +8,6 @@
   flex-wrap: wrap;
   gap: 10px;
 }
-
-
-
 
 
 .pagination {
@@ -41,7 +37,7 @@
 
 
 ion-card-content img{
-  width: 300px !important;
+  width: 320px !important;
   height: 250px !important;
   display: block;
   border-radius: 8px; /* Aggiunta di bordi arrotondati */
