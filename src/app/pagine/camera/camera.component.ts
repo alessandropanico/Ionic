@@ -17,10 +17,11 @@ export class CameraComponent {
     console.log('Taking photo...');
     try {
       const image = await Camera.getPhoto({
-        quality: 90,
+        quality: 100, // Imposta la qualità al massimo
         allowEditing: false,
         resultType: CameraResultType.DataUrl,
         source: CameraSource.Camera,
+        saveToGallery: true, // Opzionale: salva la foto nella galleria
       });
 
       console.log('Photo taken:', image);
@@ -30,8 +31,14 @@ export class CameraComponent {
 
     } catch (error) {
       console.error('Error taking photo', error);
+
+      // Gestisci il caso in cui l'utente abbia negato i permessi
+      if (error === 'Permission denied') {
+        console.error('Permission denied by user');
+      }
     }
   }
+
 
   // Calcola il numero totale di pagine
   totalPages(): number {
