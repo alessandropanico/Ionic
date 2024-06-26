@@ -39,7 +39,12 @@ ion-card {
   padding: 10px;
 }
 
-
+ion-card-content img {
+  width: 300px !important;
+  height: 300px !important;
+  display: block;
+  border-radius: 8px; /* Aggiunta di bordi arrotondati */
+}
 
 .photo-container {
   position: relative;
