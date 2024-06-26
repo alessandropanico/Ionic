@@ -58,4 +58,9 @@ ion-card-content img{
   .photo-container {
     flex: 1 0 calc(33.33% - 10px); /* Una colonna su 3 per schermi stretti */
   }
+
+  .foto{
+    width: 150px !important;
+    height: 100px !important;
+  }
 }
