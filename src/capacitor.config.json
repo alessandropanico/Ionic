@@ -1,0 +1,11 @@
+{
+  "appId": "com.example.app",
+  "appName": "Ionic App",
+  "bundledWebRuntime": false,
+  "webDir": "www",
+  "plugins": {
+    "Camera": {
+      "webCamera": true
+    }
+  }
+}

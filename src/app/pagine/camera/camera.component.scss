@@ -1,4 +1,12 @@
 .foto{
-  width: 150px;
+  width: 300px;
   height: auto;
+}
+
+
+@media screen and (max-width:600px){
+  .foto{
+    width: 100px;
+    height: auto;
+  }
 }
