@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pagine/home/home.component';
 import { AboutComponent } from './pagine/about/about.component';
 import { CameraComponent } from './pagine/camera/camera.component';
+import { MessageComponent } from './pagine/message/message.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path:'camera',
     component:CameraComponent
+  },
+  {
+    path:'message',
+    component:MessageComponent
   },
 ];
 
