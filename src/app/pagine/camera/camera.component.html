@@ -5,8 +5,23 @@
 <ion-content>
   <div class="ion-padding">
     <ion-button (click)="takePhoto()">Take Photo</ion-button>
-    <div *ngIf="photo">
-      <img class="foto" [src]="photo" alt="Photo" />
+
+    <!-- Visualizza le foto -->
+    <div class="photo-grid">
+      <div class="row" *ngFor="let row of getCurrentPageRows()">
+        <div class="photo-container" *ngFor="let photo of row">
+          <img class="foto" [src]="photo" alt="Photo" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Paginazione -->
+    <div class="pagination">
+      <button *ngFor="let page of paginationRange()"
+              [class.active]="page === currentPage"
+              (click)="changePage(page)">
+        {{ page }}
+      </button>
     </div>
   </div>
 </ion-content>

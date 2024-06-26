@@ -1,12 +1,47 @@
-.foto{
-  width: 300px;
-  height: auto;
+.photo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Spazio tra le colonne delle immagini */
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
-@media screen and (max-width:600px){
-  .foto{
-    width: 100px;
-    height: auto;
+.photo-container {
+  flex: 1 0 calc(20% - 10px); /* 5 colonne per riga */
+  box-sizing: border-box;
+  margin-bottom: 10px; /* Spazio sotto ogni riga di immagini */
+}
+
+@media screen and (max-width: 600px) {
+  .photo-container {
+    flex: 1 0 calc(33.33% - 10px); /* Una colonna su 3 per schermi stretti */
   }
+}
+
+.pagination {
+  margin-top: 20px; /* Spazio sopra la paginazione */
+  text-align: center;
+}
+
+.pagination button {
+  margin: 0 5px; /* Spazio tra i pulsanti di paginazione */
+  padding: 5px 10px;
+  border: none;
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.foto {
+  width: 300px;
+  height: auto;
+  display: block;
 }
