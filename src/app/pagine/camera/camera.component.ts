@@ -50,9 +50,23 @@ export class CameraComponent {
     return Array.from({ length: total }, (_, index) => index + 1);
   }
 
-  // Cambia la pagina corrente
-  changePage(page: number) {
+   // Cambia la pagina corrente
+   changePage(page: number) {
     this.currentPage = page;
+  }
+
+  // Vai alla pagina successiva
+  nextPage() {
+    if (this.currentPage < this.totalPages()) {
+      this.currentPage++;
+    }
+  }
+
+  // Vai alla pagina precedente
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
   }
 
   // Restituisce le righe di foto per la pagina corrente

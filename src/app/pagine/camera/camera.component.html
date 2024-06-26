@@ -2,26 +2,39 @@
   <app-header></app-header>
 </ion-header>
 
-<ion-content>
+<!-- Messaggio di nessuna foto se photos è vuoto -->
+
+<ion-content *ngIf="photos.length === 0">
+  <div class="ion-padding">
+
+    <p>Nessuna foto disponibile.</p>
+    <ion-button (click)="takePhoto()">Take Photo</ion-button>
+  </div>
+</ion-content>
+
+<!-- Utilizziamo *ngIf per condizionare la visibilità di ion-content -->
+<ion-content *ngIf="photos.length > 0">
   <div class="ion-padding">
     <ion-button (click)="takePhoto()">Take Photo</ion-button>
 
-    <!-- Visualizza le foto -->
-    <div class="photo-grid">
-      <div class="row" *ngFor="let row of getCurrentPageRows()">
-        <div class="photo-container" *ngFor="let photo of row">
-          <img class="foto" [src]="photo" alt="Photo" />
+    <!-- Visualizza le foto solo se photos non è vuoto -->
+    <ion-card class="photo-grid">
+      <ion-card-content>
+        <div class="row" *ngFor="let row of getCurrentPageRows()">
+          <ion-card *ngFor="let photo of row" class="photo-container">
+            <img class="foto" [src]="photo" alt="Photo" />
+          </ion-card>
         </div>
-      </div>
-    </div>
+      </ion-card-content>
+    </ion-card>
 
     <!-- Paginazione -->
     <div class="pagination">
-      <button *ngFor="let page of paginationRange()"
-              [class.active]="page === currentPage"
-              (click)="changePage(page)">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+      <button *ngFor="let page of paginationRange()" [class.active]="page === currentPage" (click)="changePage(page)">
         {{ page }}
       </button>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages()">Next</button>
     </div>
   </div>
 </ion-content>

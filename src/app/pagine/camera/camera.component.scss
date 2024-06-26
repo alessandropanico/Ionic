@@ -10,17 +10,9 @@
   gap: 10px;
 }
 
-.photo-container {
-  flex: 1 0 calc(20% - 10px); /* 5 colonne per riga */
-  box-sizing: border-box;
-  margin-bottom: 10px; /* Spazio sotto ogni riga di immagini */
-}
 
-@media screen and (max-width: 600px) {
-  .photo-container {
-    flex: 1 0 calc(33.33% - 10px); /* Una colonna su 3 per schermi stretti */
-  }
-}
+
+
 
 .pagination {
   margin-top: 20px; /* Spazio sopra la paginazione */
@@ -41,7 +33,29 @@
 }
 
 .foto {
-  width: 300px;
-  height: auto;
+  width: 300px !important;
+  height: 250px !important;
   display: block;
+  border-radius: 8px; /* Aggiunta di bordi arrotondati */
+}
+
+
+ion-card-content img{
+  width: 300px !important;
+  height: 250px !important;
+  display: block;
+  border-radius: 8px; /* Aggiunta di bordi arrotondati */
+}
+
+.photo-container {
+  padding: 5px;
+  flex: 1 0 calc(20% - 10px); /* 5 colonne per riga */
+  box-sizing: border-box;
+  margin-bottom: 10px; /* Spazio sotto ogni riga di immagini */
+}
+
+@media screen and (max-width: 600px) {
+  .photo-container {
+    flex: 1 0 calc(33.33% - 10px); /* Una colonna su 3 per schermi stretti */
+  }
 }
