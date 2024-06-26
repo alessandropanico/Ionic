@@ -18,7 +18,7 @@ export class CameraComponent {
         quality: 90,
         allowEditing: false,
         resultType: CameraResultType.DataUrl,
-        source: CameraSource.Camera,
+        source: CameraSource.Camera, // Utilizza la fotocamera
       });
 
       console.log('Photo taken:', image);
@@ -28,5 +28,6 @@ export class CameraComponent {
       console.error('Error taking photo', error);
     }
   }
+
 
 }
