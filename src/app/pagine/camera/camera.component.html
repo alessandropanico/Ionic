@@ -6,14 +6,14 @@
 <ion-content *ngIf="photos.length === 0">
   <div class="ion-padding">
     <p>Nessuna foto disponibile.</p>
-    <ion-button (click)="takePhoto()">Take Photo</ion-button>
+    <ion-button (click)="takePhoto()">Scatta foto</ion-button>
   </div>
 </ion-content>
 
 <!-- Utilizziamo *ngIf per condizionare la visibilità di ion-content -->
 <ion-content *ngIf="photos.length > 0">
   <div class="ion-padding">
-    <ion-button (click)="takePhoto()">Take Photo</ion-button>
+    <ion-button (click)="takePhoto()">Scatta foto</ion-button>
 
     <!-- Visualizza le foto solo se photos non è vuoto -->
     <ion-card class="photo-grid">
