@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule, provideHttpClient } from '@angular/common/http'; // Importa HttpClientModule qui
+import { MenuController } from '@ionic/angular';
 
 
 //-------------pagine------
@@ -17,6 +18,7 @@ import { AboutComponent } from './pagine/about/about.component';
 import { HeaderComponent } from './pagine/header/header.component';
 import { CameraComponent } from './pagine/camera/camera.component';
 import { MessageComponent } from './pagine/message/message.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +30,9 @@ import { MessageComponent } from './pagine/message/message.component';
 
 
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideHttpClient()],
+  imports: [BrowserModule, IonicModule.forRoot(),
+     AppRoutingModule, FormsModule, HttpClientModule, ],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideHttpClient(), MenuController],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
