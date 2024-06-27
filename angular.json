@@ -5,15 +5,10 @@
   "projects": {
     "app": {
       "projectType": "application",
-      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
-        "serve": {
-    "options": {
-      "proxyConfig": "src/proxy.conf.json"
-    },
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -80,7 +75,6 @@
             "production": {
               "buildTarget": "app:build:production"
             },
-
             "development": {
               "buildTarget": "app:build:development"
             },
@@ -141,7 +135,8 @@
   "cli": {
     "schematicCollections": [
       "@ionic/angular-toolkit"
-    ]
+    ],
+    "defaultProject": "app"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {
@@ -151,5 +146,4 @@
       "styleext": "scss"
     }
   }
-}
 }
