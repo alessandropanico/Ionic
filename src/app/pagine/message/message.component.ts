@@ -23,5 +23,12 @@ export class MessageComponent {
         // Gestisci errori qui, ad esempio mostrando un messaggio all'utente
       }
     );
+    this.clearForm()
+  }
+
+  clearForm(){
+    this.phoneNumber='';
+    this.message='';
+
   }
 }
