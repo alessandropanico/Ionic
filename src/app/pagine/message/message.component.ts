@@ -1,3 +1,5 @@
+// message.component.ts
+
 import { Component } from '@angular/core';
 import { SmsService } from 'src/app/services/sms.service';
 
@@ -7,14 +9,17 @@ import { SmsService } from 'src/app/services/sms.service';
   styleUrls: ['./message.component.scss'],
 })
 export class MessageComponent {
-  phoneNumber: string | any;
-  message: string | any;
+  selectedPrefix: string = ""; // Inizializza selectedPrefix con un valore predefinito, ad esempio "+1"
+  phoneNumber: string = "";
+  fullPhoneNumber=this.selectedPrefix+this.phoneNumber;
+  message: string = "";
   smsSent: boolean = false;
 
   constructor(private smsService: SmsService) {}
 
   sendSMS() {
-    this.smsService.sendSMS(this.phoneNumber, this.message).subscribe(
+    this.fullPhoneNumber = this.selectedPrefix + this.phoneNumber; // Combinazione di prefisso e numero di telefono
+    this.smsService.sendSMS(this.fullPhoneNumber, this.message).subscribe(
       () => {
         this.smsSent = true;
       },
@@ -23,12 +28,13 @@ export class MessageComponent {
         // Gestisci errori qui, ad esempio mostrando un messaggio all'utente
       }
     );
-    this.clearForm()
+    this.clearForm();
   }
 
-  clearForm(){
-    this.phoneNumber='';
-    this.message='';
+  
 
+  clearForm() {
+    this.phoneNumber = '';
+    this.message = '';
   }
 }

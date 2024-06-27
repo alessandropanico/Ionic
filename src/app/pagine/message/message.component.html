@@ -1,3 +1,5 @@
+<!-- message.component.html -->
+
 <ion-header>
   <app-header></app-header>
 </ion-header>
@@ -12,7 +14,17 @@
       <ion-card-content>
         <form (ngSubmit)="sendSMS()">
           <ion-item>
-            <ion-label position="floating">Numero di telefono</ion-label>
+            <ion-label position="stacked">Seleziona il prefisso</ion-label>
+            <ion-select [(ngModel)]="selectedPrefix" name="selectedPrefix" required>
+              <ion-select-option value="+1">+1 (USA)</ion-select-option>
+              <ion-select-option value="+39">+39 (Italia)</ion-select-option>
+              <ion-select-option value="+44">+44 (Regno Unito)</ion-select-option>
+              <!-- Aggiungi altri prefissi necessari -->
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Numero di telefono</ion-label>
             <ion-input type="tel" [(ngModel)]="phoneNumber" name="phoneNumber" required></ion-input>
           </ion-item>
 
@@ -28,7 +40,7 @@
 
     <ion-card *ngIf="smsSent">
       <ion-card-content>
-        <p>SMS inviato con successo a {{ phoneNumber }}</p>
+        <p>SMS inviato con successo a {{ fullPhoneNumber }}</p>
       </ion-card-content>
     </ion-card>
   </div>
