@@ -9,8 +9,8 @@ export class SmsService {
 
   constructor(private http: HttpClient) { }
 
-  sendSMS(text: string) {
-    const body = { text };
+  sendSMS(phoneNumber: string, text: string) {
+    const body = { phoneNumber, text };
     return this.http.post(this.baseUrl, body);
   }
 }

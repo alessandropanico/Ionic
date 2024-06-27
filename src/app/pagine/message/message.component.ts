@@ -14,7 +14,7 @@ export class MessageComponent {
   constructor(private smsService: SmsService) {}
 
   sendSMS() {
-    this.smsService.sendSMS(this.message).subscribe(
+    this.smsService.sendSMS(this.phoneNumber, this.message).subscribe(
       () => {
         this.smsSent = true;
       },
