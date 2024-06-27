@@ -10,15 +10,15 @@
 
     <ion-card>
       <ion-card-content>
-        <form (submit)="sendSMS()">
+        <form (ngSubmit)="sendSMS()">
           <ion-item>
             <ion-label position="floating">Numero di telefono</ion-label>
-            <ion-input type="tel" [(ngModel)]="phoneNumber" required></ion-input>
+            <ion-input type="tel" [(ngModel)]="phoneNumber" name="phoneNumber" required></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label position="floating">Messaggio</ion-label>
-            <ion-textarea rows="4" [(ngModel)]="message" required></ion-textarea>
+            <ion-textarea rows="4" [(ngModel)]="message" name="message" required></ion-textarea>
           </ion-item>
 
           <ion-button expand="block" type="submit">Invia SMS</ion-button>

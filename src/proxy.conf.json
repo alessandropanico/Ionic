@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://api.nexmo.com",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "ionic-app-base",
+  "type": "angular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "proxies": [
+    {
+      "context": "/api",
+      "target": "https://api.nexmo.com",
+      "secure": false,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  ]
+}

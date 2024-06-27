@@ -7,15 +7,14 @@ import { SmsService } from 'src/app/services/sms.service';
   styleUrls: ['./message.component.scss'],
 })
 export class MessageComponent {
-
-  phoneNumber: string |any;
-  message: string |any;
+  phoneNumber: string | any;
+  message: string | any;
   smsSent: boolean = false;
 
   constructor(private smsService: SmsService) {}
 
   sendSMS() {
-    this.smsService.sendSMS(this.phoneNumber, this.message).subscribe(
+    this.smsService.sendSMS(this.message).subscribe(
       () => {
         this.smsSent = true;
       },

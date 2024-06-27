@@ -10,6 +10,10 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+        "serve": {
+    "options": {
+      "proxyConfig": "src/proxy.conf.json"
+    },
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -76,6 +80,7 @@
             "production": {
               "buildTarget": "app:build:production"
             },
+
             "development": {
               "buildTarget": "app:build:development"
             },
@@ -146,4 +151,5 @@
       "styleext": "scss"
     }
   }
+}
 }
