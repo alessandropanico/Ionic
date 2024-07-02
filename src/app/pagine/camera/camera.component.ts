@@ -11,6 +11,8 @@ export class CameraComponent {
   currentPage = 1; // Pagina corrente
   itemsPerPage = 15; // Numero di foto per pagina
 
+  zoomedPhoto: string | null = null;
+
   constructor() { }
 
   async takePhoto() {
@@ -89,5 +91,15 @@ export class CameraComponent {
       rows.push(pagePhotos.slice(i, i + 5));
     }
     return rows;
+  }
+
+  //------------------------------
+
+  zoomPhoto(photo: string) {
+    this.zoomedPhoto = photo;
+  }
+
+  closeZoom() {
+    this.zoomedPhoto = null;
   }
 }

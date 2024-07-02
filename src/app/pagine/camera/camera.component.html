@@ -2,11 +2,10 @@
   <app-header></app-header>
 </ion-header>
 
-  <div class="d-flex justify-content-center">
-    <h1>CAMERA</h1>
-  </div>
+<div class="d-flex justify-content-center">
+  <h1>CAMERA</h1>
+</div>
 
-<!-- Messaggio di nessuna foto se photos è vuoto -->
 <ion-content *ngIf="photos.length === 0">
   <div class="ion-padding">
     <p>Nessuna foto disponibile.</p>
@@ -14,18 +13,16 @@
   </div>
 </ion-content>
 
-<!-- Utilizziamo *ngIf per condizionare la visibilità di ion-content -->
 <ion-content *ngIf="photos.length > 0">
   <div class="ion-padding">
     <ion-button (click)="takePhoto()">Scatta foto</ion-button>
 
-    <!-- Visualizza le foto solo se photos non è vuoto -->
     <ion-card class="photo-grid">
       <ion-card-content>
         <div class="row" *ngFor="let row of getCurrentPageRows()">
-          <ion-card *ngFor="let photo of row" class="photo-container">
+          <ion-card *ngFor="let photo of row" class="photo-container" (click)="zoomPhoto(photo)">
             <img class="foto" [src]="photo" alt="Photo" />
-            <button class="delete-button" (click)="deletePhoto(photo)">
+            <button class="delete-button" (click)="deletePhoto(photo); $event.stopPropagation();">
               <span class="delete-icon">&times;</span>
             </button>
           </ion-card>
@@ -33,7 +30,6 @@
       </ion-card-content>
     </ion-card>
 
-    <!-- Paginazione -->
     <div class="pagination">
       <ion-button expand="block" (click)="previousPage()" [disabled]="currentPage === 1">Previous</ion-button>
       <ion-button expand="block" *ngFor="let page of paginationRange()" [class.active]="page === currentPage" (click)="changePage(page)">
@@ -43,3 +39,8 @@
     </div>
   </div>
 </ion-content>
+
+<!-- Overlay per zoomare l'immagine -->
+<div class="overlay" *ngIf="zoomedPhoto" (click)="closeZoom()">
+  <img [src]="zoomedPhoto" alt="Zoomed Photo" class="zoomed-photo" />
+</div>
