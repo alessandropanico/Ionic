@@ -2,26 +2,27 @@
   <app-header></app-header>
 </ion-header>
 
-<div class="d-flex justify-content-center">
-  <h1>CAMERA</h1>
-</div>
+<ion-content>
+  <div class="d-flex justify-content-center">
+    <h1>CAMERA</h1>
+  </div>
 
-<ion-content *ngIf="photos.length === 0">
-  <div class="ion-padding">
+  <!-- Messaggio di nessuna foto se photos è vuoto -->
+  <div *ngIf="photos.length === 0" class="ion-padding">
     <p>Nessuna foto disponibile.</p>
     <ion-button (click)="takePhoto()">Scatta foto</ion-button>
   </div>
-</ion-content>
 
-<ion-content *ngIf="photos.length > 0">
-  <div class="ion-padding">
+  <!-- Visualizza le foto solo se photos non è vuoto -->
+  <div *ngIf="photos.length > 0" class="ion-padding">
     <ion-button (click)="takePhoto()">Scatta foto</ion-button>
 
     <ion-card class="photo-grid">
       <ion-card-content>
         <div class="row" *ngFor="let row of getCurrentPageRows()">
-          <ion-card *ngFor="let photo of row" class="photo-container" (click)="zoomPhoto(photo)">
-            <img class="foto" [src]="photo" alt="Photo" />
+          <ion-card *ngFor="let photo of row" class="photo-container" (click)="zoomPhoto(photo.src)">
+            <img class="foto" [src]="photo.src" alt="Photo" />
+            <p *ngIf="photo.lat && photo.lng">Location: {{ photo.lat }}, {{ photo.lng }}</p>
             <button class="delete-button" (click)="deletePhoto(photo); $event.stopPropagation();">
               <span class="delete-icon">&times;</span>
             </button>
@@ -30,6 +31,7 @@
       </ion-card-content>
     </ion-card>
 
+    <!-- Paginazione -->
     <div class="pagination">
       <ion-button expand="block" (click)="previousPage()" [disabled]="currentPage === 1">Previous</ion-button>
       <ion-button expand="block" *ngFor="let page of paginationRange()" [class.active]="page === currentPage" (click)="changePage(page)">
@@ -38,9 +40,9 @@
       <ion-button expand="block" (click)="nextPage()" [disabled]="currentPage === totalPages()">Next</ion-button>
     </div>
   </div>
-</ion-content>
 
-<!-- Overlay per zoomare l'immagine -->
-<div class="overlay" *ngIf="zoomedPhoto" (click)="closeZoom()">
-  <img [src]="zoomedPhoto" alt="Zoomed Photo" class="zoomed-photo" />
-</div>
+  <!-- Overlay per zoomare l'immagine -->
+  <div class="overlay" *ngIf="zoomedPhoto" (click)="closeZoom()">
+    <img [src]="zoomedPhoto" alt="Zoomed Photo" class="zoomed-photo" />
+  </div>
+</ion-content>
