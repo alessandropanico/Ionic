@@ -22,7 +22,7 @@
         <div class="row" *ngFor="let row of getCurrentPageRows()">
           <ion-card *ngFor="let photo of row" class="photo-container" (click)="zoomPhoto(photo.src)">
             <img class="foto" [src]="photo.src" alt="Photo" />
-            <p *ngIf="photo.lat && photo.lng">Location: {{ photo.lat }}, {{ photo.lng }}</p>
+            <p *ngIf="photo.lat && photo.lng">Posizione: {{ photo.lat }}, {{ photo.lng }}</p>
             <button class="delete-button" (click)="deletePhoto(photo); $event.stopPropagation();">
               <span class="delete-icon">&times;</span>
             </button>
@@ -33,6 +33,18 @@
 
     <!-- Paginazione -->
     <div class="pagination">
+
+    IT
+
+    Salta link di navigazione
+    Cerca
+
+
+
+
+
+    Immagine avatar
+    
       <ion-button expand="block" (click)="previousPage()" [disabled]="currentPage === 1">Previous</ion-button>
       <ion-button expand="block" *ngFor="let page of paginationRange()" [class.active]="page === currentPage" (click)="changePage(page)">
         {{ page }}

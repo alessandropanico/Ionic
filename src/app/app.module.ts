@@ -18,6 +18,7 @@ import { AboutComponent } from './pagine/about/about.component';
 import { HeaderComponent } from './pagine/header/header.component';
 import { CameraComponent } from './pagine/camera/camera.component';
 import { MessageComponent } from './pagine/message/message.component';
+import { ChatComponent } from './pagine/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { MessageComponent } from './pagine/message/message.component';
     HeaderComponent,
     CameraComponent,
     MessageComponent,
-
+    ChatComponent
 
   ],
   imports: [BrowserModule, IonicModule.forRoot(),
