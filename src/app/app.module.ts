@@ -13,7 +13,7 @@ import { MenuController } from '@ionic/angular';
 
 
 
-//-------------pagine------
+//-------------pagine------------
 import { HomeComponent } from './pagine/home/home.component';
 import { AboutComponent } from './pagine/about/about.component';
 import { HeaderComponent } from './pagine/header/header.component';
