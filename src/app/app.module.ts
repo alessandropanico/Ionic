@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http'; // Importa HttpClientModule qui
 import { MenuController } from '@ionic/angular';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
 
 //-------------pagine------
 import { HomeComponent } from './pagine/home/home.component';
@@ -28,12 +31,22 @@ import { ChatComponent } from './pagine/chat/chat.component';
     HeaderComponent,
     CameraComponent,
     MessageComponent,
-    ChatComponent
-
+    ChatComponent,
   ],
-  imports: [BrowserModule, IonicModule.forRoot(),
-     AppRoutingModule, FormsModule, HttpClientModule, ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideHttpClient(), MenuController],
+  imports: [
+    BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+  ],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideHttpClient(),
+    MenuController,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

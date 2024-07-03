@@ -2,3 +2,24 @@
   <app-header></app-header>
 </ion-header>
 
+<ion-content>
+  <div class="chat-container">
+    <div class="chat-messages">
+      <div *ngFor="let msg of messages" class="chat-message" (mouseenter)="showDeleteButton(msg)" (mouseleave)="hideDeleteButton(msg)">
+        <strong>{{ msg.user }}:</strong>
+        <ng-container *ngIf="!msg.deleted; else deletedMessage">
+          {{ msg.message }}
+          <span class="timestamp">{{ msg.timestamp | date:'shortTime' }}</span>
+          <button *ngIf="msg.showDeleteButton" (click)="deleteMessage(msg)">Delete</button>
+        </ng-container>
+        <ng-template #deletedMessage>
+          <em>messaggio eliminato</em>
+        </ng-template>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input [(ngModel)]="newMessage" placeholder="Type your message here..." />
+      <button (click)="sendMessage()" type="submit">Send</button>
+    </div>
+  </div>
+</ion-content>
