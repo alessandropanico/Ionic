@@ -10,13 +10,6 @@ export class AuthService {
   constructor() {}
 
   register(username: string, password: string): boolean {
-    if (this.isLoggedIn()) {
-      if (!confirm('You are already logged in. Do you want to log out and register a new user?')) {
-        return false; // User cancelled logout
-      }
-      this.logout(); // Log out if user confirms
-    }
-
     const users = this.getUsers();
     if (users.find(user => user.username === username)) {
       alert('Registration failed. Username already exists.');
