@@ -5,10 +5,12 @@
 <ion-content>
   <div class="chat-container">
     <div class="chat-messages">
-      <div *ngFor="let msg of messages" class="chat-message" [ngClass]="{'sent-message': msg.user === user, 'received-message': msg.user !== user}" (mouseenter)="showDeleteButton(msg)" (mouseleave)="hideDeleteButton(msg)">
+      <div *ngFor="let msg of messages" class="chat-message"
+      [ngClass]="{'sent-message': msg.user === user, 'received-message': msg.user !== user}"
+      (mouseenter)="showDeleteButton(msg)" (mouseleave)="hideDeleteButton(msg)">
         <ng-container *ngIf="!msg.deleted; else deletedMessage">
           <strong>{{ msg.user }}:</strong>
-          {{ msg.message }}
+          {{ msg.message }}<br>
           <span class="timestamp">{{ msg.timestamp | date:'shortTime' }}</span>
           <button *ngIf="msg.showDeleteButton" (click)="deleteMessage(msg)">Delete</button>
         </ng-container>
