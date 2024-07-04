@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule, provideHttpClient } from '@angular/common/http'; // Importa HttpClientModule qui
 import { MenuController } from '@ionic/angular';
-
+import { AuthGuard } from './guardia/auth.guard';
 
 
 //-------------pagine------------
@@ -20,6 +20,11 @@ import { HeaderComponent } from './pagine/header/header.component';
 import { CameraComponent } from './pagine/camera/camera.component';
 import { MessageComponent } from './pagine/message/message.component';
 import { ChatComponent } from './pagine/chat/chat.component';
+import { LoginComponent } from './pagine/login/login.component';
+import { RegisterComponent } from './pagine/register/register.component';
+
+//------SPECIAL------
+import { SpecialComponent } from './pagine/special/special.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +35,9 @@ import { ChatComponent } from './pagine/chat/chat.component';
     CameraComponent,
     MessageComponent,
     ChatComponent,
+    LoginComponent,
+    RegisterComponent,
+    SpecialComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +50,7 @@ import { ChatComponent } from './pagine/chat/chat.component';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideHttpClient(),
     MenuController,
+    AuthGuard,
   ],
   bootstrap: [AppComponent],
 })

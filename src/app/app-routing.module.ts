@@ -5,6 +5,10 @@ import { AboutComponent } from './pagine/about/about.component';
 import { CameraComponent } from './pagine/camera/camera.component';
 import { MessageComponent } from './pagine/message/message.component';
 import { ChatComponent } from './pagine/chat/chat.component';
+import { LoginComponent } from './pagine/login/login.component';
+import { RegisterComponent } from './pagine/register/register.component';
+import { SpecialComponent } from './pagine/special/special.component';
+import { AuthGuard } from './guardia/auth.guard';
 
 const routes: Routes = [
   {
@@ -30,6 +34,20 @@ const routes: Routes = [
   {
     path:'chat',
     component:ChatComponent,
+  },
+  {
+    path:'login',
+    component:LoginComponent,
+  },
+  {
+    path:'register',
+    component:RegisterComponent,
+  },
+  {
+    path:'special',
+    component:SpecialComponent,
+    canActivate: [AuthGuard], // Add this line
+
   },
 ];
 
