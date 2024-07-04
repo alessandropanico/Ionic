@@ -9,14 +9,29 @@
   </div>
 
 
+  <section *ngIf="!modifica">
   <div class="profile-header">
     <div class="profile-image">
       <img *ngIf="profile.profileImage" [src]="profile.profileImage" alt="Profile Image">
     </div>
+
   </div>
 
+  <!--DATI-->
+  <div class="container">
+    <div class="nome">{{profile.fullName}}</div>
+    <div>{{profile.email}}</div>
+    <div>{{profile.phoneNumber}}</div>
+    <div>{{profile.birthDate}}</div>
+    <div>{{profile.address}}</div>
+    <div>{{profile.description}}</div>
 
+    <ion-button (click)="modificaProfilo()">MODIFICA</ion-button>
 
+  </div>
+</section>
+
+<section *ngIf="modifica">
   <ion-list lines="full">
 
     <ion-item>
@@ -59,4 +74,5 @@
   </ion-list>
 
   <ion-button expand="block" (click)="saveProfile()">Salva Profilo</ion-button>
+</section>
 </ion-content>

@@ -7,7 +7,7 @@ import { AuthService, UserProfile } from 'src/app/services/auth.service';
   styleUrls: ['./profilo.component.scss'],
 })
 export class ProfiloComponent implements OnInit {
-  
+
   profile: UserProfile = {
     fullName: '',
     email: '',
@@ -18,9 +18,12 @@ export class ProfiloComponent implements OnInit {
     profileImage: '',
   };
 
+  modifica:boolean=false;
+
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
+    this.modifica=false;
     const existingProfile = this.authService.getUserProfile();
     if (existingProfile) {
       this.profile = existingProfile;
@@ -30,6 +33,7 @@ export class ProfiloComponent implements OnInit {
   saveProfile() {
     this.authService.saveUserProfile(this.profile);
     alert('Profile saved successfully!');
+    this.modifica=false;
   }
 
   onFileSelected(event: any) {
@@ -39,5 +43,9 @@ export class ProfiloComponent implements OnInit {
       this.profile.profileImage = e.target.result;
     };
     reader.readAsDataURL(file);
+  }
+
+  modificaProfilo(){
+    this.modifica=true;
   }
 }
