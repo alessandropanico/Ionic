@@ -1,0 +1,12 @@
+.titolo{
+  font-size: 50px;
+  color:rgb(2, 200, 2);
+}
+
+
+@media screen and (max-width:600px){
+  .titolo{
+    font-size: 20px;
+
+  }
+}
