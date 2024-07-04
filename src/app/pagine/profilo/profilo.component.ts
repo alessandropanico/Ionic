@@ -7,6 +7,7 @@ import { AuthService, UserProfile } from 'src/app/services/auth.service';
   styleUrls: ['./profilo.component.scss'],
 })
 export class ProfiloComponent implements OnInit {
+  
   profile: UserProfile = {
     fullName: '',
     email: '',
