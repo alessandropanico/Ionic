@@ -1,0 +1,35 @@
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.profile-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.profile-title {
+  font-size: 24px;
+}
+
+ion-list {
+  margin-top: 20px;
+}
+
+ion-item {
+  --padding-start: 10px;
+  --inner-padding-end: 10px;
+}
+
+ion-label {
+  font-weight: bold;
+}
+
+ion-input,
+ion-datetime,
+ion-textarea {
+  width: 100%;
+}

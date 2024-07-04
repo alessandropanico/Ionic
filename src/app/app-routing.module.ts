@@ -8,7 +8,10 @@ import { ChatComponent } from './pagine/chat/chat.component';
 import { LoginComponent } from './pagine/login/login.component';
 import { RegisterComponent } from './pagine/register/register.component';
 import { SpecialComponent } from './pagine/special/special.component';
+
+//------------------------------
 import { AuthGuard } from './guardia/auth.guard';
+import { ProfiloComponent } from './pagine/profilo/profilo.component';
 
 const routes: Routes = [
   {
@@ -46,6 +49,11 @@ const routes: Routes = [
   {
     path:'special',
     component:SpecialComponent,
+    canActivate: [AuthGuard], // Add this line
+  },
+  {
+    path:'profilo',
+    component:ProfiloComponent,
     canActivate: [AuthGuard], // Add this line
 
   },

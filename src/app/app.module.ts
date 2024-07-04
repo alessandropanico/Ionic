@@ -23,8 +23,10 @@ import { ChatComponent } from './pagine/chat/chat.component';
 import { LoginComponent } from './pagine/login/login.component';
 import { RegisterComponent } from './pagine/register/register.component';
 
-//------SPECIAL------
+
+//------COMPONENTI SPECIALI------
 import { SpecialComponent } from './pagine/special/special.component';
+import { ProfiloComponent } from './pagine/profilo/profilo.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { SpecialComponent } from './pagine/special/special.component';
     LoginComponent,
     RegisterComponent,
     SpecialComponent,
+    ProfiloComponent
   ],
   imports: [
     BrowserModule,

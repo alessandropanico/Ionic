@@ -1,5 +1,15 @@
 import { Injectable } from '@angular/core';
 
+export interface UserProfile {
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+  birthDate: string;
+  address: string;
+  description: string;
+  profileImage: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -7,12 +17,13 @@ export class AuthService {
   private tokenKey = 'authToken';
   private usersKey = 'users';
   private currentUserKey = 'currentUser';
+  private profileKey = 'userProfile';
 
   constructor() {}
 
   register(username: string, password: string): boolean {
     const users = this.getUsers();
-    if (users.find(user => user.username === username)) {
+    if (users.find((user) => user.username === username)) {
       alert('Registration failed. Username already exists.');
       return false; // Username already exists
     }
@@ -30,7 +41,9 @@ export class AuthService {
 
   login(username: string, password: string): boolean {
     const users = this.getUsers();
-    const user = users.find(user => user.username === username && user.password === password);
+    const user = users.find(
+      (user) => user.username === username && user.password === password
+    );
     if (user) {
       const token = 'dummy-token'; // This would be a JWT token in a real app
       localStorage.setItem(this.tokenKey, token);
@@ -58,8 +71,19 @@ export class AuthService {
     return localStorage.getItem(this.currentUserKey);
   }
 
-  private getUsers(): { username: string, password: string }[] {
+  private getUsers(): { username: string; password: string }[] {
     const usersJson = localStorage.getItem(this.usersKey);
     return usersJson ? JSON.parse(usersJson) : [];
+  }
+
+  //--------------------------------
+
+  getUserProfile(): UserProfile | null {
+    const profileJson = localStorage.getItem(this.profileKey);
+    return profileJson ? JSON.parse(profileJson) : null;
+  }
+
+  saveUserProfile(profile: UserProfile): void {
+    localStorage.setItem(this.profileKey, JSON.stringify(profile));
   }
 }
