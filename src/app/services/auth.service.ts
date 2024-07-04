@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   private tokenKey = 'authToken';
   private usersKey = 'users';
+  private currentUserKey = 'currentUser';
 
   constructor() {}
 
@@ -21,6 +22,7 @@ export class AuthService {
     // Automatically log in the user after registration
     const token = 'dummy-token'; // This would be a JWT token in a real app
     localStorage.setItem(this.tokenKey, token);
+    localStorage.setItem(this.currentUserKey, username);
 
     alert('Registration successful. You are now logged in.');
     return true;
@@ -32,6 +34,7 @@ export class AuthService {
     if (user) {
       const token = 'dummy-token'; // This would be a JWT token in a real app
       localStorage.setItem(this.tokenKey, token);
+      localStorage.setItem(this.currentUserKey, username);
       return true;
     }
     return false;
@@ -39,6 +42,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem(this.currentUserKey);
     alert('You have been logged out.');
   }
 
@@ -48,6 +52,10 @@ export class AuthService {
 
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
+  }
+
+  getCurrentUser(): string | null {
+    return localStorage.getItem(this.currentUserKey);
   }
 
   private getUsers(): { username: string, password: string }[] {

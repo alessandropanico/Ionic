@@ -1,32 +1,12 @@
- <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-  <ul class="navbar-nav">
-    <li>
-      <a class="navbar-brand" href="https://www.youtube.com/channel/UC8rQxh_mjGtKiBQJkixhYGQ">YouTube</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/home">HOME</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/about">ABOUT</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/camera">CAMERA</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/message">SMS</a>
-    </li>
-
-  </ul>
-</nav> -->
-
-
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Menu</ion-title>
+    <ion-buttons slot="end" *ngIf="currentUser" class="utente">
+      <ion-label>{{ currentUser }}</ion-label>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
