@@ -1,22 +1,35 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   private tokenKey = 'authToken';
   private usersKey = 'users';
 
-  constructor() { }
+  constructor() {}
 
   register(username: string, password: string): boolean {
+    if (this.isLoggedIn()) {
+      if (!confirm('You are already logged in. Do you want to log out and register a new user?')) {
+        return false; // User cancelled logout
+      }
+      this.logout(); // Log out if user confirms
+    }
+
     const users = this.getUsers();
     if (users.find(user => user.username === username)) {
+      alert('Registration failed. Username already exists.');
       return false; // Username already exists
     }
     users.push({ username, password });
     localStorage.setItem(this.usersKey, JSON.stringify(users));
+
+    // Automatically log in the user after registration
+    const token = 'dummy-token'; // This would be a JWT token in a real app
+    localStorage.setItem(this.tokenKey, token);
+
+    alert('Registration successful. You are now logged in.');
     return true;
   }
 
@@ -33,6 +46,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(this.tokenKey);
+    alert('You have been logged out.');
   }
 
   isLoggedIn(): boolean {

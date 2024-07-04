@@ -16,12 +16,19 @@ export class RegisterComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
   register(): void {
+    if (this.authService.isLoggedIn()) {
+      alert('You must log out before registering a new user.');
+      return;
+    }
+
     if (this.password !== this.confirmPassword) {
       alert('Passwords do not match');
       return;
     }
+
     if (this.authService.register(this.username, this.password)) {
-      this.router.navigate(['/login']);
+      alert('Registration successful. You are now logged in.');
+      this.router.navigate(['/special']);
     } else {
       alert('Registration failed. Username already exists.');
     }
