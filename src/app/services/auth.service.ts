@@ -68,7 +68,6 @@ export class AuthService {
     return true;
   }
 
-
   login(username: string, password: string): boolean {
     const users = this.getUsers();
     const user = users.find(
@@ -88,7 +87,6 @@ export class AuthService {
     this.setCurrentUser(null);
     alert('You have been logged out.');
   }
-
 
   isLoggedIn(): boolean {
     return localStorage.getItem(this.tokenKey) !== null;
@@ -116,6 +114,22 @@ export class AuthService {
     const currentUser = this.currentUserSubject.value;
     if (currentUser) {
       localStorage.setItem(`profile_${currentUser}`, JSON.stringify(profile));
+    }
+  }
+
+  getUserPhotos(): { src: string, lat?: number, lng?: number }[] {
+    const currentUser = this.currentUserSubject.value;
+    if (currentUser) {
+      const photosJson = localStorage.getItem(`photos_${currentUser}`);
+      return photosJson ? JSON.parse(photosJson) : [];
+    }
+    return [];
+  }
+
+  saveUserPhotos(photos: { src: string, lat?: number, lng?: number }[]): void {
+    const currentUser = this.currentUserSubject.value;
+    if (currentUser) {
+      localStorage.setItem(`photos_${currentUser}`, JSON.stringify(photos));
     }
   }
 }
