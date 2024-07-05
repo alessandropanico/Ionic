@@ -22,7 +22,7 @@
       <div class="nome">{{profile.fullName}}</div>
       <div>{{profile.email}}</div>
       <div>{{profile.phoneNumber}}</div>
-      <div>{{profile.birthDate}}</div>
+      <div>{{profile.birthDate | date:'dd/MM/yyyy'}}</div> <!-- Format for Italian date -->
       <div>{{profile.address}}</div>
       <div>{{profile.description}}</div>
 
