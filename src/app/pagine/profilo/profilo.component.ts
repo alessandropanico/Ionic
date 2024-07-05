@@ -29,7 +29,29 @@ export class ProfiloComponent implements OnInit {
         const existingProfile = this.authService.getUserProfile();
         if (existingProfile) {
           this.profile = existingProfile;
+        } else {
+          // Se non c'è un profilo esistente, inizializza un profilo vuoto
+          this.profile = {
+            fullName: '',
+            email: '',
+            phoneNumber: '',
+            birthDate: '',
+            address: '',
+            description: '',
+            profileImage: '',
+          };
         }
+      } else {
+        // Se non c'è un utente loggato, inizializza un profilo vuoto
+        this.profile = {
+          fullName: '',
+          email: '',
+          phoneNumber: '',
+          birthDate: '',
+          address: '',
+          description: '',
+          profileImage: '',
+        };
       }
     });
   }

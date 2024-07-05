@@ -52,9 +52,22 @@ export class AuthService {
     localStorage.setItem(this.tokenKey, token);
     this.setCurrentUser(username);
 
+    // Initialize an empty profile for the new user
+    const emptyProfile: UserProfile = {
+      fullName: '',
+      email: '',
+      phoneNumber: '',
+      birthDate: '',
+      address: '',
+      description: '',
+      profileImage: '',
+    };
+    this.saveUserProfile(emptyProfile);
+
     alert('Registration successful. You are now logged in.');
     return true;
   }
+
 
   login(username: string, password: string): boolean {
     const users = this.getUsers();
@@ -75,6 +88,7 @@ export class AuthService {
     this.setCurrentUser(null);
     alert('You have been logged out.');
   }
+
 
   isLoggedIn(): boolean {
     return localStorage.getItem(this.tokenKey) !== null;

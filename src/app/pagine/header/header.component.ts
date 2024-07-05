@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   currentUser: string | null = null;
-  private userSubscription: Subscription | null = null; // Inizializza come null
+  private userSubscription: Subscription | null = null;
 
   constructor(private menuService: MenuService, private authService: AuthService) {}
 
