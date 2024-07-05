@@ -24,10 +24,14 @@ export class ProfiloComponent implements OnInit {
 
   ngOnInit() {
     this.modifica=false;
-    const existingProfile = this.authService.getUserProfile();
-    if (existingProfile) {
-      this.profile = existingProfile;
-    }
+    this.authService.getCurrentUser().subscribe(user => {
+      if (user) {
+        const existingProfile = this.authService.getUserProfile();
+        if (existingProfile) {
+          this.profile = existingProfile;
+        }
+      }
+    });
   }
 
   saveProfile() {

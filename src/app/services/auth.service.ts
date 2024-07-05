@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface UserProfile {
   fullName: string;
@@ -17,9 +18,25 @@ export class AuthService {
   private tokenKey = 'authToken';
   private usersKey = 'users';
   private currentUserKey = 'currentUser';
-  private profileKey = 'userProfile';
+  private currentUserSubject: BehaviorSubject<string | null>;
 
-  constructor() {}
+  constructor() {
+    const currentUser = localStorage.getItem(this.currentUserKey);
+    this.currentUserSubject = new BehaviorSubject<string | null>(currentUser);
+  }
+
+  getCurrentUser(): Observable<string | null> {
+    return this.currentUserSubject.asObservable();
+  }
+
+  private setCurrentUser(username: string | null): void {
+    if (username) {
+      localStorage.setItem(this.currentUserKey, username);
+    } else {
+      localStorage.removeItem(this.currentUserKey);
+    }
+    this.currentUserSubject.next(username);
+  }
 
   register(username: string, password: string): boolean {
     const users = this.getUsers();
@@ -33,7 +50,7 @@ export class AuthService {
     // Automatically log in the user after registration
     const token = 'dummy-token'; // This would be a JWT token in a real app
     localStorage.setItem(this.tokenKey, token);
-    localStorage.setItem(this.currentUserKey, username);
+    this.setCurrentUser(username);
 
     alert('Registration successful. You are now logged in.');
     return true;
@@ -47,7 +64,7 @@ export class AuthService {
     if (user) {
       const token = 'dummy-token'; // This would be a JWT token in a real app
       localStorage.setItem(this.tokenKey, token);
-      localStorage.setItem(this.currentUserKey, username);
+      this.setCurrentUser(username);
       return true;
     }
     return false;
@@ -55,7 +72,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(this.tokenKey);
-    localStorage.removeItem(this.currentUserKey);
+    this.setCurrentUser(null);
     alert('You have been logged out.');
   }
 
@@ -67,23 +84,24 @@ export class AuthService {
     return localStorage.getItem(this.tokenKey);
   }
 
-  getCurrentUser(): string | null {
-    return localStorage.getItem(this.currentUserKey);
-  }
-
   private getUsers(): { username: string; password: string }[] {
     const usersJson = localStorage.getItem(this.usersKey);
     return usersJson ? JSON.parse(usersJson) : [];
   }
 
-  //--------------------------------
-
   getUserProfile(): UserProfile | null {
-    const profileJson = localStorage.getItem(this.profileKey);
-    return profileJson ? JSON.parse(profileJson) : null;
+    const currentUser = this.currentUserSubject.value;
+    if (currentUser) {
+      const profileJson = localStorage.getItem(`profile_${currentUser}`);
+      return profileJson ? JSON.parse(profileJson) : null;
+    }
+    return null;
   }
 
   saveUserProfile(profile: UserProfile): void {
-    localStorage.setItem(this.profileKey, JSON.stringify(profile));
+    const currentUser = this.currentUserSubject.value;
+    if (currentUser) {
+      localStorage.setItem(`profile_${currentUser}`, JSON.stringify(profile));
+    }
   }
 }

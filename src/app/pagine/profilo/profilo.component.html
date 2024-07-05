@@ -10,69 +10,69 @@
 
 
   <section *ngIf="!modifica">
-  <div class="profile-header">
-    <div class="profile-image">
-      <img *ngIf="profile.profileImage" [src]="profile.profileImage" alt="Profile Image">
+    <div class="profile-header">
+      <div class="profile-image">
+        <img *ngIf="profile.profileImage" [src]="profile.profileImage" alt="Profile Image">
+      </div>
+
     </div>
 
-  </div>
+    <!--DATI-->
+    <div class="container">
+      <div class="nome">{{profile.fullName}}</div>
+      <div>{{profile.email}}</div>
+      <div>{{profile.phoneNumber}}</div>
+      <div>{{profile.birthDate}}</div>
+      <div>{{profile.address}}</div>
+      <div>{{profile.description}}</div>
 
-  <!--DATI-->
-  <div class="container">
-    <div class="nome">{{profile.fullName}}</div>
-    <div>{{profile.email}}</div>
-    <div>{{profile.phoneNumber}}</div>
-    <div>{{profile.birthDate}}</div>
-    <div>{{profile.address}}</div>
-    <div>{{profile.description}}</div>
+      <ion-button (click)="modificaProfilo()">MODIFICA</ion-button>
 
-    <ion-button (click)="modificaProfilo()">MODIFICA</ion-button>
+    </div>
+  </section>
 
-  </div>
-</section>
+  <section *ngIf="modifica">
+    <ion-list lines="full">
 
-<section *ngIf="modifica">
-  <ion-list lines="full">
-
-    <ion-item>
-      <ion-label position="stacked">Carica Immagine del Profilo</ion-label>
-      <input type="file" (change)="onFileSelected($event)">
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Carica Immagine del Profilo</ion-label>
+        <input type="file" (change)="onFileSelected($event)">
+      </ion-item>
 
 
-    <ion-item>
-      <ion-label position="stacked">Nome Completo</ion-label>
-      <ion-input type="text" [(ngModel)]="profile.fullName"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Nome Completo</ion-label>
+        <ion-input type="text" [(ngModel)]="profile.fullName"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Email</ion-label>
-      <ion-input type="email" [(ngModel)]="profile.email"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="profile.email"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Numero di Telefono</ion-label>
-      <ion-input type="tel" [(ngModel)]="profile.phoneNumber"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Numero di Telefono</ion-label>
+        <ion-input type="tel" [(ngModel)]="profile.phoneNumber"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Data di Nascita</ion-label>
-      <ion-datetime displayFormat="D MMM YYYY" [(ngModel)]="profile.birthDate"></ion-datetime>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Data di Nascita</ion-label>
+        <ion-datetime displayFormat="D MMM YYYY" [(ngModel)]="profile.birthDate"></ion-datetime>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Indirizzo</ion-label>
-      <ion-input type="text" [(ngModel)]="profile.address"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Indirizzo</ion-label>
+        <ion-input type="text" [(ngModel)]="profile.address"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Descrizione</ion-label>
-      <ion-textarea rows="4" [(ngModel)]="profile.description"></ion-textarea>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Descrizione</ion-label>
+        <ion-textarea rows="4" [(ngModel)]="profile.description"></ion-textarea>
+      </ion-item>
 
 
-  </ion-list>
+    </ion-list>
 
-  <ion-button expand="block" (click)="saveProfile()">Salva Profilo</ion-button>
-</section>
+    <ion-button expand="block" (click)="saveProfile()">Salva Profilo</ion-button>
+  </section>
 </ion-content>
