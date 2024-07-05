@@ -28,7 +28,8 @@ const routes: Routes = [
   },
   {
     path:'camera',
-    component:CameraComponent
+    component:CameraComponent,
+    canActivate: [AuthGuard], // Add this line
   },
   {
     path:'message',
